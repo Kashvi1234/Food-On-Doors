@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="styles.css">
+  <title>Checkout - Thapar Food Delivery</title>
+</head>
+
+<style>
+
+body {
+  font-family: 'Arial', sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f4f4f4;
+}
+
+header {
+  background-color: #333;
+  color: #fff;
+  text-align: center;
+  padding: 1em;
+}
+
+.checkout-content {
+  display: flex;
+  justify-content: space-around;
+  max-width: 800px;
+  margin: 20px auto;
+  padding: 20px;
+  background-color: #fff;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.order-summary, .payment-details {
+  flex: 1;
+}
+
+.order-summary h2, .payment-details h2 {
+  border-bottom: 2px solid #333;
+  padding-bottom: 10px;
+}
+
+.order-summary ul {
+  list-style: none;
+  padding: 0;
+}
+
+.order-summary li {
+  margin: 5px 0;
+}
+
+form {
+  display: grid;
+  grid-gap: 10px;
+}
+
+label {
+  font-weight: bold;
+}
+
+input {
+  width: 100%;
+  padding: 8px;
+  box-sizing: border-box;
+  margin-top: 5px;
+}
+
+button {
+  background-color: #333;
+  color: #fff;
+  padding: 10px;
+  border: none;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #555;
+}
+
+footer {
+  text-align: center;
+  padding: 1em;
+  background-color: #333;
+  color: #fff;
+}
+
+
+
+</style>
+
+
+
+<body>
+
+  <header>
+    <h1>Checkout</h1>
+  </header>
+
+  <section class="checkout-content">
+    <div class="order-summary">
+      <h2>Order Summary</h2>
+      <!-- Add dynamic content based on the user's selected items -->
+      <ul>
+        <li>Burger x 2 - $10.00</li>
+        <li>Pasta x 1 - $7.00</li>
+        <!-- Add more items as needed -->
+      </ul>
+      <p>Total: $17.00</p>
+    </div>
+
+    <div class="payment-details">
+      <h2>Payment Details</h2>
+      <form id="order-form" action="#" method="post">
+        <label for="card-number">Card Number:</label>
+        <input type="text" id="card-number" name="card-number" placeholder="Enter your card number" required>
+
+        <label for="expiry-date">Expiry Date:</label>
+        <input type="text" id="expiry-date" name="expiry-date" placeholder="MM/YY" required>
+
+        <label for="cvv">CVV:</label>
+        <input type="text" id="cvv" name="cvv" placeholder="CVV" required>
+
+        <button type="submit">Place Order</button>
+      </form>
+    </div>
+  </section>
+
+  <footer>
+    <p>For support, contact us at: support@thaparfooddelivery.com</p>
+  </footer>
+
+  <script>
+    document.getElementById('order-form').addEventListener('submit', function(event) {
+      event.preventDefault(); // Prevents the form from submitting normally
+
+      // Hide the checkout-content section
+      document.querySelector('.checkout-content').style.display = 'none';
+
+      // Create a confirmation box for order confirmation
+      var confirmationBox = document.createElement('div');
+      confirmationBox.textContent = 'Your order is confirmed and is being prepared.';
+      confirmationBox.style.backgroundColor = '#f0f0f0';
+      confirmationBox.style.padding = '10px';
+      confirmationBox.style.border = '1px solid #ccc';
+      confirmationBox.style.marginTop = '10px';
+      confirmationBox.style.textAlign = 'center';
+
+      // Append the confirmation box to the document body
+      document.body.appendChild(confirmationBox);
+
+      // Redirect to the home page after 3 seconds
+      setTimeout(function() {
+        window.location.href = 'index1.html'; // Replace 'home.html' with your actual home page URL
+      },1500); // 3000 milliseconds = 3 seconds
+    });
+  </script>
+  <footer>
+    <p>For support, contact us at: support@thaparfooddelivery.com</p>
+  </footer>
+
+</body>
+</html>

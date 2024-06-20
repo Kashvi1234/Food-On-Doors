@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login and Signup Page</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f8f8f8;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .login-signup-container {
+            text-align: center;
+        }
+
+        .login-signup-option {
+            display: inline-block;
+            margin: 20px;
+            padding: 20px;
+            background-color: #3498db;
+            color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .login-signup-option:hover {
+            background-color: #2980b9;
+        }
+
+        .login-signup-popup {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            z-index: 1;
+        }
+
+        input {
+            width: 100%;
+            padding: 10px;
+            margin: 8px 0;
+            box-sizing: border-box;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        button {
+            background-color: #3498db;
+            color: #fff;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: #2980b9;
+        }
+
+        .close-btn {
+            color: #3498db;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        .close-btn:hover {
+            text-decoration: underline;
+        }
+
+        .error-message {
+            color: #e74c3c;
+            margin-top: 5px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="login-signup-container">
+    <div class="login-signup-option" onclick="openPopup('login')">Login</div>
+    <div class="login-signup-option" onclick="openPopup('signup')">Signup</div>
+</div>
+
+<div id="loginPopup" class="login-signup-popup">
+    <h2>Login</h2>
+    <form onsubmit="return validateLogin()" action="your_login_endpoint" method="post">
+        <label for="username">Username:</label>
+        <input type="text" id="username" name="username" required>
+
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" required>
+
+        <button type="submit">Login</button>
+    </form>
+    <span class="close-btn" onclick="closePopup('login')">Close</span>
+    <p id="loginErrorMessage" class="error-message"></p>
+</div>
+
+<div id="signupPopup" class="login-signup-popup">
+    <h2>Signup</h2>
+    <form onsubmit="return validateSignup()" action="your_signup_endpoint" method="post">
+        <label for="newUsername">Username:</label>
+        <input type="text" id="newUsername" name="newUsername" required>
+
+        <label for="newPassword">Password:</label>
+        <input type="password" id="newPassword" name="newPassword" required>
+
+        <button type="submit">Signup</button>
+    </form>
+    <span class="close-btn" onclick="closePopup('signup')">Close</span>
+    <p id="signupErrorMessage" class="error-message"></p>
+</div>
+
+<script>
+    function openPopup(type) {
+        document.getElementById(type + 'Popup').style.display = 'block';
+    }
+
+    function closePopup(type) {
+        document.getElementById(type + 'Popup').style.display = 'none';
+        document.getElementById(type + 'ErrorMessage').innerText = '';
+    }
+
+    function validateLogin() {
+        var username = document.getElementById('username').value;
+        var password = document.getElementById('password').value;
+
+        if (username === '' || password === '') {
+            document.getElementById('loginErrorMessage').innerText = 'Username and password are required.';
+            return false;
+        }
+
+        // Additional validation logic can be added here if needed.
+
+        return true;
+    }
+
+    function validateSignup() {
+        var newUsername = document.getElementById('newUsername').value;
+        var newPassword = document.getElementById('newPassword').value;
+
+        if (newUsername === '' || newPassword === '') {
+            document.getElementById('signupErrorMessage').innerText = 'Username and password are required.';
+            return false;
+        }
+
+        // Additional validation logic can be added here if needed.
+
+        return true;
+    }
+</script>
+
+</body>
+</html>
